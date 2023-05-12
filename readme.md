@@ -1,3 +1,9 @@
+https://developer.hashicorp.com/nomad/docs/integrations/consul-connect
+This project use consul, nomad and envoy. 
+works on local. vagrant is not used
+pre requisite: install nomad and consul on local 
+
+
 consul agent -dev
 
 sudo nomad agent -dev-connect
