@@ -26,4 +26,4 @@ open http://192.168.1.25:9002/  ()
 http://localhost:8500   (consul ui)
 http://192.168.1.25:4646/  (nomad ui)
 
-http://192.168.1.25:80  (wordpress)
+http://192.168.1.25:80  (wordpress)  will open http://192.168.1.25/wp-admin/setup-config.php
