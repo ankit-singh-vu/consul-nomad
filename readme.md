@@ -21,9 +21,15 @@ echo 1 | sudo tee /proc/sys/net/bridge/bridge-nf-call-iptables
 
 nomad job run servicemesh.nomad.hcl
 nomad job run wordpress.nomad.hcl
+nomad job run phpmyadmin.nomad.hcl
+nomad job run mysql.nomad.hcl
 
 open http://192.168.1.25:9002/  ()
 http://localhost:8500   (consul ui)
-http://192.168.1.25:4646/  (nomad ui)
+http://localhost:4646/  (nomad ui)
 
-http://192.168.1.25:80  (wordpress)  will open http://192.168.1.25/wp-admin/setup-config.php
+http://localhost:80  (wordpress)  will open http://192.168.1.25/wp-admin/setup-config.php
+
+http://localhost:80 (phpmyadmin)
+
+mysql -u root -padmin  (mysql)
