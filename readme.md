@@ -33,3 +33,16 @@ http://localhost:80  (wordpress)  will open http://192.168.1.25/wp-admin/setup-c
 http://localhost:80 (phpmyadmin)
 
 mysql -u root -padmin  (mysql)
+
+
+-----------
+
+
+
+---for daily startup
+consul agent -dev
+sudo nomad agent -dev-connect
+nomad job run scale.nomad.hcl
+
+(delete job)
+nomad job stop -purge scale  
