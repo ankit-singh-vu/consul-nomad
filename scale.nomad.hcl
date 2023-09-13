@@ -36,9 +36,13 @@ job "wordpress-app" {
   type = "service"
 
   group "wordpress-group" {
-    count = 2
+    count = 1
 
-    scaling {
+
+
+
+
+    /* scaling {
       min     = 1
       max     = 10
       enabled = true
@@ -56,7 +60,7 @@ job "wordpress-app" {
           }
         }
       }
-    }
+    } */
 
     // network {
     //   port "http" {
@@ -72,6 +76,24 @@ job "wordpress-app" {
       }
     }
 
+    scaling {
+      enabled = true
+      min     = 1
+      max     = 20
+
+      policy {
+        cooldown = "60s"
+
+        check "avg_sessions" {
+          source = "prometheus"
+          query  = "avg(nomad_client_allocs_memory_usage{exported_job=\"wordpress-app\"})/1000000"
+
+          strategy "target-value" {
+            target = 200
+          }
+        }
+      }
+    }
 
     task "wordpress" {
       driver = "docker"

@@ -46,3 +46,19 @@ nomad job run scale.nomad.hcl
 
 (delete job)
 nomad job stop -purge scale  
+
+
+nomad job run autoscaler.nomad
+nomad job run prometheus.nomad
+nomad job run webapp.nomad
+nomad job run traefik.nomad
+
+
+scalar(nomad_nomad_job_summary_running{exported_job="webapp",task_group="demo"})
+
+scalar(nomad_nomad_job_summary_running{exported_job="wordpress-app",task_group="wordpress-group"})
+
+
+avg(nomad_client_allocs_memory_allocated{exported_job="wordpress-app",task_group="wordpress-group"})
+
+avg(nomad_client_allocs_memory_usage{exported_job="wordpress-app"})
