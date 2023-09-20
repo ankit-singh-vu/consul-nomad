@@ -90,4 +90,23 @@ http://127.0.0.1:3000 Grafana
 http://127.0.0.1:8081 Traefik
 http://127.0.0.1:9090 Prometheus
 
-hey -n 100 -z 2m http://192.168.1.25:27072/
+hey -c 100 -z 30s http://213.165.232.20:20141
+
+
+https://developer.hashicorp.com/nomad/docs/operations/metrics-reference
+https://developer.hashicorp.com/nomad/docs/configuration/telemetry
+
+http://213.165.232.33:4646/v1/metrics?format=prometheus
+
+```
+1.in nomad.hcl  in all the vms add 
+telemetry {
+  publish_allocation_metrics = true
+  publish_node_metrics       = true
+  prometheus_metrics         = true
+}
+restart nomad in all the vms 
+
+2.make sure there is no error (e.g  connecting error) in autoscaler logs
+3.check the prometheus graph with your query. it should not be empty.
+```
