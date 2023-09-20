@@ -82,14 +82,14 @@ job "wordpress-app" {
       max     = 20
 
       policy {
-        cooldown = "60s"
+        cooldown = "30s"
 
         check "avg_sessions" {
           source = "prometheus"
           query  = "avg(nomad_client_allocs_memory_usage{exported_job=\"wordpress-app\"})/1000000"
 
           strategy "target-value" {
-            target = 200
+            target = 250
           }
         }
       }

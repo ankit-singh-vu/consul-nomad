@@ -7,8 +7,14 @@ job "prometheus" {
   group "prometheus" {
     count = 1
 
-    network {
-      port "prometheus_ui" {}
+    // network {
+    //   port "prometheus_ui" {}
+    // }
+
+    network {    
+      port "prometheus_ui" {
+        static = 9091
+      }
     }
 
     task "prometheus" {
