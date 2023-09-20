@@ -1,36 +1,3 @@
-/* job "example" {
-  group "app" {
-    //count = 3 
-    task "web" {
-      driver = "docker"
-
-      config {
-        image = "hashicorpdev/counter-api:v3"
-      }
-    }
-    scaling {
-      min     = 2
-      max     = 10
-      enabled = true
-
-      policy {
-        evaluation_interval = "5s"
-        cooldown            = "1m"
-
-        check "active_connections" {
-          source = "prometheus"
-          query  = "scalar(open_connections_example_cache)"
-
-          strategy "target-value" {
-            target = 10
-          }
-        }
-      }
-    }
-  }
-} */
-
-
 job "wordpress-app" {
   datacenters = ["dc1"]
   type = "service"
@@ -38,35 +5,6 @@ job "wordpress-app" {
   group "wordpress-group" {
     count = 1
 
-
-
-
-
-    /* scaling {
-      min     = 1
-      max     = 10
-      enabled = true
-
-      policy {
-        evaluation_interval = "5s"
-        cooldown            = "1m"
-
-        check "active_connections" {
-          source = "prometheus"
-          query  = "scalar(open_connections_example_cache)"
-
-          strategy "target-value" {
-            target = 10
-          }
-        }
-      }
-    } */
-
-    // network {
-    //   port "http" {
-    //     to = 6380
-    //   }
-    // }
     network {
       mode = "bridge"
 
