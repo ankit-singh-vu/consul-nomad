@@ -13,7 +13,7 @@ job "prometheus" {
 
     network {    
       port "prometheus_ui" {
-        static = 9091
+        static = 9090
       }
     }
 

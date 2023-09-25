@@ -7,8 +7,14 @@ job "grafana" {
   group "grafana" {
     count = 1
 
-    network {
-      port "grafana_ui" {}
+    // network {
+    //   port "grafana_ui" {}
+    // }
+
+    network {    
+      port "grafana_ui" {
+        static = 3000
+      }
     }
 
     volume "grafana" {
@@ -26,7 +32,7 @@ job "grafana" {
         volumes = [
           "local/datasources:/etc/grafana/provisioning/datasources",
           "local/dashboards:/etc/grafana/provisioning/dashboards",
-          "/home/vagrant/nomad-autoscaler/files:/var/lib/grafana/dashboards",
+          "/home/dev/CONVESIO/v4/consul-nomad/files:/var/lib/grafana/dashboards"
         ]
       }
 

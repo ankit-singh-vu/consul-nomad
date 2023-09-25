@@ -110,3 +110,8 @@ restart nomad in all the vms
 2.make sure there is no error (e.g  connecting error) in autoscaler logs
 3.check the prometheus graph with your query. it should not be empty.
 ```
+
+# loads nomad with our defined config
+sudo nomad agent -dev-connect -config=/etc/nomad.d
+
+http://192.168.1.25:3000/d/8QlvShyZz/nomad-autoscaler-demo?orgId=1&refresh=5s
